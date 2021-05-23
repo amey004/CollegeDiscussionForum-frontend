@@ -7,7 +7,7 @@ function AuthContextProvider(props) {
     const [loggedIn,setloggedIn]=useState(undefined);
 
     async function getLoggedIn(){
-        const loggedInres = await axios.get("http://localhost:5000/auth/loggedIn");
+        const loggedInres = await axios.get("https://college-discussion-forum.herokuapp.com/auth/loggedIn");
         setloggedIn(loggedInres.data);
     }
     

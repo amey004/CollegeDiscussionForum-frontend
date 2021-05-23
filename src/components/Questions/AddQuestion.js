@@ -14,7 +14,7 @@ export default function AddQuestion(props) {
         const[type,setType] =useState("");
 
         async function data() {
-          const UserData = await axios.get("http://localhost:5000/auth/user");
+          const UserData = await axios.get("https://college-discussion-forum.herokuapp.com/auth/user");
           setfirstName(UserData.data.firstName);
           setuserId(UserData.data._id);
         }
@@ -26,7 +26,7 @@ export default function AddQuestion(props) {
             que:question, 
             type:type
           }
-          await axios.post("http://localhost:5000/addquestion/",data);
+          await axios.post("https://college-discussion-forum.herokuapp.com/addquestion/",data);
           history.push("/");
         }
         useEffect(()=>{

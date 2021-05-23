@@ -41,7 +41,7 @@ class register extends Component {
           passwordVerify:this.state.verifyPassword
         };
 
-        await axios.post("http://localhost:5000/auth/",registerData);
+        await axios.post("https://college-discussion-forum.herokuapp.com/auth/",registerData);
         await getLoggedIn();
         this.props.history.push("/");
       } catch (error) {

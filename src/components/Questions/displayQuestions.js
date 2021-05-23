@@ -17,7 +17,7 @@ class displayQuestions extends Component {
   }
   static contextType = AuthContext;
   async getQuestions() {
-    const questionsRes = await axios.get("http://localhost:5000/addquestion");
+    const questionsRes = await axios.get("https://college-discussion-forum.herokuapp.com/addquestion");
     this.setState({
       questions: questionsRes.data,
     });
@@ -32,7 +32,7 @@ class displayQuestions extends Component {
     const ans = this.state.answer;
     const Name = this.props.name;
     async function AddAnswer(e, { id }) {
-      await axios.post("http://localhost:5000/addquestion/ans", {
+      await axios.post("https://college-discussion-forum.herokuapp.com/addquestion/ans", {
         id,
         answer: ans,
         Name,

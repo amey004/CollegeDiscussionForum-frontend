@@ -35,7 +35,7 @@ export default class LoginComponent extends Component {
         password: this.state.password,
       };
 
-      await axios.post("http://localhost:5000/auth/login", loginData);
+      await axios.post("https://college-discussion-forum.herokuapp.com/auth/login", loginData);
       await getLoggedIn();
       this.props.history.push("/")
     } catch (error) {

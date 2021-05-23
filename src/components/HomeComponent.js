@@ -15,7 +15,7 @@ export default function HomeComponent() {
     async function data(){
       if(login.loggedIn===true){
           const UserData = await axios.get(
-            "http://localhost:5000/auth/user"
+            "https://college-discussion-forum.herokuapp.com/auth/user"
           );
           setfirstName(UserData.data.firstName);
           setlastName(UserData.data.lastName);
