@@ -11,7 +11,7 @@ function LogoutBtn() {
     async function logout() {
         await axios.get("https://college-discussion-forum.herokuapp.com/auth/logout");
         await getLoggedIn();
-        history.push("/register");
+        history.push("/login");
     }
     return (
     
