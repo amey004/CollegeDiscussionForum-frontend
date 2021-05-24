@@ -4,6 +4,7 @@ import { Card, CardBody,Input,Button,Form } from "reactstrap";
 import AuthContext from "../../context/AuthContext";
 import "../../App.css"
 import {Grow} from "@material-ui/core"
+import {HashLoader} from "react-spinners";
 
 class displayQuestions extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class displayQuestions extends Component {
     this.state = {
       questions: [],
       answer: "",
+      isLoading:false,
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.rederQuestions = this.rederQuestions.bind(this);
@@ -20,6 +22,7 @@ class displayQuestions extends Component {
     const questionsRes = await axios.get("https://college-discussion-forum.herokuapp.com/addquestion");
     this.setState({
       questions: questionsRes.data,
+      isLoading:true,
     });
   }
   componentDidMount() {
@@ -31,6 +34,7 @@ class displayQuestions extends Component {
     const questionsArr = this.state.questions;
     const ans = this.state.answer;
     const Name = this.props.name;
+
     async function AddAnswer(e, { id }) {
       await axios.post("https://college-discussion-forum.herokuapp.com/addquestion/ans", {
         id,
@@ -153,8 +157,11 @@ class displayQuestions extends Component {
     });
   }
 
+  
   render() {
-    return <>{this.rederQuestions()}</>;
+    return <>
+    {this.state.isLoading ? this.rederQuestions() : <HashLoader color="#966aff" css={{display:"block",margin:"auto",marginTop:"50px"}} className="align-self-center"></HashLoader>}
+    </>;
   }
 }
 
